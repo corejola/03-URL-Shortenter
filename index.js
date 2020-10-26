@@ -47,7 +47,6 @@ app.get('/:shortUrl', async (req, res) => {
 })
 
 
-
 app.get('*', (req, res) => {
     const rootHtmlPath = path.resolve(__dirname, 'views', 'layouts', 'main.handlebars');
     res.sendFile(rootHtmlPath);
