@@ -3,15 +3,19 @@ const connectDB = require('./config/db')
 const exphbs = require('express-handlebars');
 const Url = require('./models/Url')
 const app = express();
+const path = require('path')
 
+// Views
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
 
 // Connect to Database
 connectDB();
 
-app.use(express.json({ extended: false }))
+
+const PORT = process.env.PORT || 5000
 
 // post request
 app.post('/shorten', async (req, res) => {
@@ -42,6 +46,11 @@ app.get('/:shortUrl', async (req, res) => {
     res.redirect(shortenedUrl.longUrl)
 })
 
-const PORT = process.env.PORT || 5000
+
+
+app.get('*', (req, res) => {
+    const rootHtmlPath = path.resolve(__dirname, 'views', 'layouts', 'main.handlebars');
+    res.sendFile(rootHtmlPath);
+})
 
 app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`))

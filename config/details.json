@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://035Crendel:035Crendel@cluster0.cyea3.mongodb.net/URL-Shortener?retryWrites=true&w=majority",
-    "baseUrl": "http://localhost:5000"
-}

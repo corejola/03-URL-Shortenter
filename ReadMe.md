@@ -11,4 +11,5 @@
 
 ### Limitations
 4. needed the database relationship to provide the link & redirect
+5. deploying to a hosting service such as heroku & gh-pages
 
